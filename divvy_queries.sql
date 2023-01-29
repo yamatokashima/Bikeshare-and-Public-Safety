@@ -1,8 +1,7 @@
-Imported data
 -- Table creations
 
 -- Importing monthly tables
-CREATE TABLE Divvybikes_2020_01 (
+CREATE TABLE divvyrides (
     ride_id text primary key,
     rideable_type text NOT NULL,
     started_at timestamp,
@@ -18,18 +17,8 @@ CREATE TABLE Divvybikes_2020_01 (
 	member_casual text
 	);
 
--- Combining monthly tables by year 
-CREATE TABLE divvbikes_2022 AS
-	SELECT *
-	FROM public.divvybikes_2022_01
-	UNION
-	SELECT *
-    FROM public.divvybikes_2022_02
-    UNION
-    SELECT *
-    FROM public.divvybikes_2022_03
-
 -- Combining yearly tables (2020-2022)
+
 CREATE TABLE divvbikes_2020_2021_2022 AS
 	SELECT *
 	FROM public.divvybikes_2020
@@ -40,25 +29,8 @@ CREATE TABLE divvbikes_2020_2021_2022 AS
     SELECT *
     FROM public.divvybikes_2022
 
--- Combining yearly tables (2016-2019)
-SELECT t.*, ds.*
-FROM (
-    SELECT *
-    FROM public.divvybikes_2016
-    UNION
-    SELECT *
-    FROM public.divvybikes_2017
-    UNION
-    SELECT *
-    FROM public.divvybikes_2018
-    UNION
-    SELECT *
-    FROM public.divvybikes_2019
-) t
-LEFT JOIN public.divvy_stations ds
-ON ds.id = t.start_station_id;
-
 -- New table for crimes 2016-2022
+
 CREATE TABLE 
 	chiacgo_crimes_new AS
 		SELECT 
@@ -70,6 +42,7 @@ CREATE TABLE
 			AND date_part('year',date) < 2022
 
 -- Created new table using crime data in Chicago
+
 create table clean_crime as
 select
 	id,
