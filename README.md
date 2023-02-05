@@ -56,10 +56,10 @@ Seeing these patterns allowed me to take a more targeted approach and when looki
 When looking at certain areas around the Mag Mile to add new bike share stations, one potential location could be along the Chicago Riverwalk near the Columbus Drive bridge, as it is a well-known tourist spot.This location was chosen over the Michigan Ave bridge due to the lack of bike accessibility on that bridge. Another place to consider would be on the northern end of the Mag Mile, near several restaurants and large shopping districts. Both of these would reduce the need for riders to travel far by foot and by having the stations placed in high-traffic areas, it may also assist in deterring crime due to an increased level of visibility.
 
 ### Alternative Recommendations:
-• Avoiding routes that pass through high-crime areas
-• Allowing and encouraging riders to report emergencies directly through the Divvy app. Now I understand that there are several legal implications to this, so we would want to do some additional research before pursuing this option.
-• Recommending safer routes through the app, even if they may take longer to reach certain destinations.
-• Recommending lock boxes for riders to store their valuables to help deter theft
+* Avoiding routes that pass through high-crime areas
+* Allowing and encouraging riders to report emergencies directly through the Divvy app. Now I understand that there are several legal implications to this, so we would want to do some additional research before pursuing this option.
+* Recommending safer routes through the app, even if they may take longer to reach certain destinations.
+* Recommending lock boxes for riders to store their valuables to help deter theft
 
 ### Conclusion:
 Am amalgamation of these steps will not only help to improve the overall experience for bike share riders but also promote the sustainable and safe use of bike sharing services.
