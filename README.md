@@ -3,18 +3,18 @@
 ### I examined Divvy Bike and Chicago crime data to make suggestions on relocation and addition of new bike stations focusing on public safety.
 
 I worked with following datasets:
-• Divvy Bkeshare Stations
-• Divvy Ridership
-• City of Chicago Crime Date
+* Divvy Bkeshare Stations
+* Divvy Ridership
+* City of Chicago Crime Date
 
 After downloading the data and uploading it into pgAdmin, I cleaned the data down significantly. 
 
 The most notable changes:
-• All data was cut down to just the time period 2016 - 2022
-• Crime data was cleaned to just “relevant” crimes in “relevant” locations (violent crimes that a typical pedestrian or bike rider would reasonably have to worry about)
-• I removed station ID’s that did not exist in the referential Divvy Stations table
-• I rounded all other trips to the nearest minute
-• I removed any outliers (data more than 2 standard deviations from the mean)
+* All data was cut down to just the time period 2016 - 2022
+* Crime data was cleaned to just “relevant” crimes in “relevant” locations (violent crimes that a typical pedestrian or bike rider would reasonably have to worry about)
+* I removed station ID’s that did not exist in the referential Divvy Stations table
+* I rounded all other trips to the nearest minute
+* I removed any outliers (data more than 2 standard deviations from the mean)
 
 Access all original datasources and my updated datasources [here](https://drive.google.com/drive/folders/1wU45gss6v1pX1oZ_xKAccQ8hZRW5DsWK?usp=sharing)
 
