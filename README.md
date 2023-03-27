@@ -24,30 +24,30 @@ Access all original datasources and my updated datasources [here](https://drive.
 ### Finding distance of crimes to bike stations:
 I was originally going to use fuzzy joins using the Levenshtein formula seen here:
 
-SELECT
-	station_name,
-	date,
-	CASE WHEN (69.0410421
-		* DEGREES(ACOS(LEAST(1.0, COS(RADIANS(bikes.latitude::DECIMAL))
-		* COS(RADIANS(crime.latitude::DECIMAL))
-		* COS(RADIANS(bikes.longitude::DECIMAL - crime.longitude::DECIMAL))
-		+ SIN(RADIANS(bikes.latitude::DECIMAL))
-		* SIN(RADIANS(crime.latitude::DECIMAL))))))::DECIMAL(7,3) < '0.3' THEN 1 END AS crime_totals
-FROM 
-	public.new_divvy_stations AS bikes
-INNER JOIN 
-	clean_crime AS crime
-ON 
-	levenshtein(crime.latitude, bikes.latitude) <= 3
+	SELECT
+		station_name,
+		date,
+		CASE WHEN (69.0410421
+			* DEGREES(ACOS(LEAST(1.0, COS(RADIANS(bikes.latitude::DECIMAL))
+			* COS(RADIANS(crime.latitude::DECIMAL))
+			* COS(RADIANS(bikes.longitude::DECIMAL - crime.longitude::DECIMAL))
+			+ SIN(RADIANS(bikes.latitude::DECIMAL))
+			* SIN(RADIANS(crime.latitude::DECIMAL))))))::DECIMAL(7,3) < '0.3' THEN 1 END AS crime_totals
+	FROM 
+		public.new_divvy_stations AS bikes
+	INNER JOIN 
+		clean_crime AS crime
+	ON 
+		levenshtein(crime.latitude, bikes.latitude) <= 3
 				
 but realized that Levenshtein’s formula is only good when using text/strings. Values like coordinates are much more precise and I wanted to be as accurate as possible with the findings so I transitioned to using CTE’s to combine tables then running the following formula that calculate stations within 0.2 miles of a bike station:
 	
-COUNT(DISTINCT(CASE WHEN (69.0410421 
-		* DEGREES(ACOS(LEAST(1.0, COS(RADIANS(latitude1::DECIMAL))
-		* COS(RADIANS(latitude2::DECIMAL))
-		* COS(RADIANS(longitude1::DECIMAL longitude2::DECIMAL))
-		+ SIN(RADIANS(latitude1::DECIMAL))
-		* SIN(RADIANS(latitude2::DECIMAL))))))::DECIMAL(7,3) < '0.2' THEN “ “ END)) AS “ “
+	COUNT(DISTINCT(CASE WHEN (69.0410421 
+			* DEGREES(ACOS(LEAST(1.0, COS(RADIANS(latitude1::DECIMAL))
+			* COS(RADIANS(latitude2::DECIMAL))
+			* COS(RADIANS(longitude1::DECIMAL longitude2::DECIMAL))
+			+ SIN(RADIANS(latitude1::DECIMAL))
+			* SIN(RADIANS(latitude2::DECIMAL))))))::DECIMAL(7,3) < '0.2' THEN “ “ END)) AS “ “
 
 ### Trends:
 By looking at current ridership and crime data, we can see a resurgence of ridership in Chicago's inner city opposed to the surrounding suburban areas as a result of the pandemic. The data shows that the majority of the crimes occur in areas frequented by Divvy riders such as sidewalks, streets, and alleyways, and many of these reports do not result in arrests.
